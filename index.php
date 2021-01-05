@@ -15,50 +15,70 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Login With Google</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+	<link rel="stylesheet" href="css/stylesheet.css">
+	<script src="js/script.js" type="text/javascript" async></script>
 </head>
 <body>
-<div class="container" style="margin-top: 100px">
-	<div class="row">
-		<div class="col-md-3">
-			<img style="width: 80%;" src="<?php echo $_SESSION['picture'] ?>">
+<div class = "header">
+	<div class="user">
+		<div class="avt">
+		<img class = "avatar" src="
+			<?php 
+			if($_SESSION['access_token'] != 1) {
+				echo $_SESSION['picture'];
+			}
+			else {
+				$avartar = "images/avatar/";
+				$avartar .= $_SESSION['picture'];
+				echo $avartar;
+			}
+			?>
+		">
 		</div>
-
-		<div class="col-md-9">
-			<table class="table table-hover table-bordered">
-				<tbody>
-					<tr>
-						<td>ID</td>
-						<td><?php echo $_SESSION['id'] ?></td>
-					</tr>
-					<tr>
-						<td>First Name</td>
-						<td><?php echo $_SESSION['givenName'] ?></td>
-					</tr>
-					<tr>
-						<td>Last Name</td>
-						<td><?php echo $_SESSION['familyName'] ?></td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td><?php echo $_SESSION['email'] ?></td>
-					</tr>
-					<tr>
-						<td>Gender</td>
-						<td><?php echo $_SESSION['gender'] ?></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="name">
+			<?php echo $_SESSION['givenName'] 
+				#echo $_SESSION['id'] 
+				#echo $_SESSION['email'] 
+			?>
+			
 		</div>
-		<?php
-			if(array_key_exists('logout', $_POST)) { 
-				header('Location: logout.php');
-				exit();
-			} 
-		?> 
-		<form action="" method = "post">
-			<input type="submit" value="Log out" name = "logout" class="btn btn-danger">
-		</form>
+		<div class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="logout.php">Log out</a>
+		</div>
 	</div>
+</div>
+
+	<div class="container2">
+        <div class="calendar">
+            <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                    <h1></h1>
+                    <p></p>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days">
+                
+            </div>
+        </div>
+	</div>
+	<div class="container3"></div>
+
+<div class = "footer">
+
 </div>
 </body>
 </html>
