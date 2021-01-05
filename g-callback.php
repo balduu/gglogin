@@ -16,9 +16,9 @@
 
 	$_SESSION['id'] = $userData['id'];
 	$_SESSION['email'] = $userData['email'];
-	$_SESSION['gender'] = $userData['gender'];
+	//$_SESSION['gender'] = $userData['gender'];
 	$_SESSION['picture'] = $userData['picture'];
-	$_SESSION['familyName'] = $userData['familyName'];
+	//$_SESSION['familyName'] = $userData['familyName'];
 	$_SESSION['givenName'] = $userData['givenName'];
 
 	header('Location: index.php');
