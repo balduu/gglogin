@@ -1,8 +1,8 @@
 <?php
-    require_once "config.php";
+    require_once __DIR__ . "/../config.php";
 
 	if (isset($_SESSION['access_token'])) {
-		header('Location: index.php');
+		header('Location: views/index2.php');
 		exit();
 	}
 
@@ -48,7 +48,7 @@
                     $_SESSION['picture'] = $row['avartar'];
                     $_SESSION['givenName'] = $row['name'];
                     $_SESSION['access_token'] = 1;
-                    header('Location: index.php');
+                    header('Location: index2.php');
                     exit();
                 }
             }
@@ -61,7 +61,7 @@
 
                 <img class = "logo" src="images/New2020.png"><br><br>
 
-                <form action="login.php" method="post" target="_self">
+                <form action="" method="post" target="_self">
                     <input placeholder="Email..." name="email" class="form-control"><br>
                     <input type="password" placeholder="Password..." name="password" class="form-control"><br>
                     <input type="submit" name = "login" value="Log In" class="btn btn-primary">

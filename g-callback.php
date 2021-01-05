@@ -21,6 +21,6 @@
 	//$_SESSION['familyName'] = $userData['familyName'];
 	$_SESSION['givenName'] = $userData['givenName'];
 
-	header('Location: index.php');
+	header('Location: views/index2.php');
 	exit();
 ?>
