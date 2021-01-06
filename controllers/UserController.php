@@ -1,3 +1,11 @@
+<style>
+	.loginEr {
+		color: red;
+		margin-left: 450px;
+		margin-top: -210px;
+		position: fixed;
+	}
+</style>
 <?php 
 	/**
 	* 
@@ -25,7 +33,7 @@
 					
 				 } else {
 				 	require_once('views/Login.php');
-				 	echo "sai ten dang nhap hoac mat khau ";
+					 print "<div class = 'loginEr'> sai ten dang nhap hoac mat khau</div>";
 				 }
 				 
 			}else{

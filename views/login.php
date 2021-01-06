@@ -1,3 +1,20 @@
+<style>
+    body {
+        background-color: #66A5AD;
+    }
+    .lgcontainer {
+        width: 100%;
+        height: 100%;
+        background-image: url("views/images/long_phung.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    .lgcontainer .form-control {
+        width: 60%;
+    }
+</style>
 <?php
     require_once __DIR__ . "/../config.php";
 
@@ -20,46 +37,11 @@
     <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 <body>
-    <?php
-        $server = 'localhost';
-        $user = 'root';
-        $pass = '';
-        $mydb = 'htttweb';
-
-        $con = mysqli_connect($server, $user, $pass, $mydb);
-        if ( !$con) {
-            die ("Cannot connect to $server using $user");
-        } 
-
-        if(isset($_POST['login'])) {
-            $email = $_POST['email'];
-            $pass = $_POST['password'];
-            //print "SELECT COUNT(*), `id`, `email`, `passwd`, `name`, `avartar` FROM `users` WHERE `name` = '". $email ."' AND `passwd` = '". $pass ."'";
-            $sql="SELECT COUNT(*), `id`, `email`, `name`, `avartar` FROM `users` 
-            WHERE `email` = '". $email ."' AND `passwd` = '". $pass ."'";
-            $result = $con->query($sql);
-            while($row = $result->fetch_assoc()) {
-                if($row['COUNT(*)'] == 0) {
-                    print "<p class = 'loginEr'>Wrong email or password</p>";
-                } 
-                if ($row['COUNT(*)'] == 1) {
-                    $_SESSION['id'] = $row['id'];
-                    $_SESSION['email'] = $row['email'];
-                    $_SESSION['picture'] = $row['avartar'];
-                    $_SESSION['givenName'] = $row['name'];
-                    $_SESSION['access_token'] = 1;
-                    header('Location: index2.php');
-                    exit();
-                }
-            }
-        }
-
-    ?>
-    <div class="container" style="margin-top: 10px">
+    <div class="lgcontainer">
         <div class="row justify-content-center">
             <div class="col-md-6 col-offset-3" align="center">
 
-                <img class = "logo" src="images/New2020.png"><br><br>
+                <img style = "width: 200px; height: auto;" src="views/images/logo.png"><br><br>
 
                 <form action="" method="post" target="_self">
                     <input placeholder="Email..." name="email" class="form-control"><br>
