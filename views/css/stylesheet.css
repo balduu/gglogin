@@ -222,6 +222,7 @@ td:hover:not(.tet):not(.tet2):not(.ngaytuan):not(.navi-l):not(.navi-r):not(.tent
     height: fit-content;
     padding-bottom: 30px;
     background-color: #66A5AD;
+    clear: both;
 }
 #date {
     color: #ffffff;
@@ -236,7 +237,7 @@ td:hover:not(.tet):not(.tet2):not(.ngaytuan):not(.navi-l):not(.navi-r):not(.tent
     height: fit-content;
     min-height: 330px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     padding-left: 30px;
     padding-right: 30px;
     margin-left: auto;
@@ -247,6 +248,19 @@ td:hover:not(.tet):not(.tet2):not(.ngaytuan):not(.navi-l):not(.navi-r):not(.tent
     color: #003B46;
     font-weight: 500;
     font-size: 22px;
+}
+#element {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100px;
+    height: fit-content;
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    background-color: #FDFDF0;
+    border: 5px solid #003B46;
+    font-size: 20px;
 }
 .footer {
     background-color: #66A5AD;

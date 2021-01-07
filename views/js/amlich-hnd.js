@@ -57,7 +57,8 @@ var TK22 = new Array(
 		0x346d56, 0x585aa0, 0x42ab50, 0x2e56d4, 0x544ae0, 0x3ca570, 0x2864d2, 0x4cd260, 0x36eaa6, 0x5ad550,
 		0x465aa0, 0x30ada5, 0x5695d0, 0x404ad0, 0x2aa9b3, 0x50a4d0, 0x3ad2b7, 0x5eb250, 0x48b540, 0x33d556
 ); /* Years 2100-2199 */
-
+var birth;
+var ELEMENT = new Array("Mộc", "Kim", "Thủy", "Hỏa", "Thổ");
 var CAN = new Array("Gi\341p", "\u1EA4t", "B\355nh", "\u0110inh", "M\u1EADu", "K\u1EF7", "Canh", "T\342n", "Nh\342m", "Qu\375");
 var CHI = new Array("T\375", "S\u1EEDu", "D\u1EA7n", "M\343o", "Th\354n", "T\u1EF5", "Ng\u1ECD", "M\371i", "Th\342n", "D\u1EADu", "Tu\u1EA5t", "H\u1EE3i");
 var TUAN = new Array("Ch\u1EE7 nh\u1EADt", "Th\u1EE9 hai", "Th\u1EE9 ba", "Th\u1EE9 t\u01B0", "Th\u1EE9 n\u0103m", "Th\u1EE9 s\341u", "Th\u1EE9 b\u1EA3y");
@@ -306,7 +307,7 @@ function getDayName(lunarDate) {
 		return "";
 	}
 	var cc = getCanChi(lunarDate);
-	var s = "Ng\u00E0y " + cc[0] +", th\341ng "+cc[1] + ", n\u0103m " + cc[2];
+	var s = "Ng\u00E0y " + cc[0]  +", th\341ng "+cc[1] + ", n\u0103m " + cc[2];
 	return s;
 }
 
@@ -333,7 +334,56 @@ function getCanChi(lunar) {
 }
 
 function getDayString(lunar, solarDay, solarMonth, solarYear) {
-	var s;
+	var s,element;
+	var element1,can1,chi1;
+	/*
+	if((((lunar.jd + 9) % 10) == 3) || (((lunar.jd + 9) % 10) == 4)) {
+		can1 = 1;
+	}
+	else if((((lunar.jd + 9) % 10) == 5) || (((lunar.jd + 9) % 10) == 6)) {
+		can1 = 2;
+	}
+	else if((((lunar.jd + 9) % 10) == 7) || (((lunar.jd + 9) % 10) == 8)) {
+		can1 = 3;
+	}
+	else if((((lunar.jd + 9) % 10) == 9) || (((lunar.jd + 9) % 10) == 0)) {
+		can1 = 4;
+	}
+	else if((((lunar.jd + 9) % 10) == 1) || (((lunar.jd + 9) % 10) == 2)) {
+		can1 = 5;
+	}
+	*/
+	if((((lunar.jd + 9) % 10) == 0) || (((lunar.jd + 9) % 10) == 1)) {
+		can1 = 1;
+	}
+	else if((((lunar.jd + 9) % 10) == 2) || (((lunar.jd + 9) % 10) == 3)) {
+		can1 = 2;
+	}
+	else if((((lunar.jd + 9) % 10) == 4) || (((lunar.jd + 9) % 10) == 5)) {
+		can1 = 3;
+	}
+	else if((((lunar.jd + 9) % 10) == 6) || (((lunar.jd + 9) % 10) == 7)) {
+		can1 = 4;
+	}
+	else if((((lunar.jd + 9) % 10) == 8) || (((lunar.jd + 9) % 10) == 9)) {
+		can1 = 5;
+	}
+
+	if((((lunar.jd+1)%12) == 1) || (((lunar.jd+1)%12) == 0) || (((lunar.jd+1)%12) == 7) || (((lunar.jd+1)%12) == 6)) {
+		chi1 = 0;
+	}
+	else if((((lunar.jd+1)%12) == 2) || (((lunar.jd+1)%12) == 3) || (((lunar.jd+1)%12) == 9) || (((lunar.jd+1)%12) == 8)) {
+		chi1 = 1;
+	}
+	else if((((lunar.jd+1)%12) == 5) || (((lunar.jd+1)%12) == 4) || (((lunar.jd+1)%12) == 11) || (((lunar.jd+1)%12) == 10)) {
+		chi1 = 2;
+	}
+
+	element1 = (can1 + chi1) % 5;
+	//var mes = "Can: " + can1 + ", Chi: " + chi1;
+	//alert (mes);
+	element = ELEMENT[element1];
+	//----------------------------------------------------------
 	var dayOfWeek = TUAN[(lunar.jd + 1) % 7];
 	if (solarDay == 1 && solarMonth == 1) {
 		s = dayOfWeek + " Ngày Tết dương lịch";
@@ -360,6 +410,7 @@ function getDayString(lunar, solarDay, solarMonth, solarYear) {
 		}
 	}
 	//------------------------
+	s += " Hành " + element;
 	return s;
 }
 
@@ -644,5 +695,3 @@ function showVietCal() {
 	window.status = getCurrentTime() + " -+- " + getTodayString();
 	window.window.setTimeout("showVietCal()",5000);
 }
-
-//showVietCal();
