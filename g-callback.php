@@ -18,7 +18,8 @@
 	$_SESSION['email'] = $userData['email'];
 	//$_SESSION['gender'] = $userData['gender'];
 	$_SESSION['picture'] = $userData['picture'];
-	//$_SESSION['familyName'] = $userData['familyName'];
+	$_SESSION['birth'] = 1999;
+	#$_SESSION['birth'] = $userData['birthday'];
 	$_SESSION['givenName'] = $userData['givenName'];
 
 	header('Location: views/index2.php');

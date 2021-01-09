@@ -26,7 +26,8 @@
 					$_SESSION['id'] = $user['id'];
                     $_SESSION['email'] = $user['email'];
                     $_SESSION['picture'] = $user['avartar'];
-                    $_SESSION['givenName'] = $user['name'];
+					$_SESSION['givenName'] = $user['name'];
+					$_SESSION['birth'] = $user['birth'];
 					$_SESSION['access_token'] = 1;
 					header('Location: views/index2.php');
                     exit();
